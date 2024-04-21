@@ -11,9 +11,12 @@ from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 import smtplib
+import os
+from dotenv import load_dotenv, dotenv_values
 
-ADMIN_EMAIL = "food.blog.editor@gmail.com"
-pw = "avtelhlalkjtdjcs"
+load_dotenv()
+ADMIN_EMAIL = os.getenv("EMAIL")
+pw = os.getenv("PASSWORD")
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
